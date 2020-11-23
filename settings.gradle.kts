@@ -1,2 +1,2 @@
-rootProject.name = "rsocket-server"
+rootProject.name = "rsocket"
 include("rsocket-server")
