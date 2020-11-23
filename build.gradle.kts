@@ -7,11 +7,32 @@ plugins {
 	kotlin("plugin.spring") version "1.4.10"
 }
 
+buildscript {
+	repositories {
+		mavenCentral()
+		maven(url = "https://plugins.gradle.org/m2/")
+	}
+
+	dependencies {
+		classpath("org.jetbrains.kotlin:kotlin-allopen:1.4.10")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
+		classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.10")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.4.0")
+	}
+}
+
+//java.sourceCompatibility = JavaVersion.VERSION_11
+
 allprojects {
+
+	apply(plugin = "java")
+	apply(plugin = "kotlin")
+	apply(plugin = "kotlin-spring")
+	apply(plugin = "org.springframework.boot")
+	apply(plugin = "io.spring.dependency-management")
 
 	group = "allen.lee"
 	version = "0.0.1-SNAPSHOT"
-	java.sourceCompatibility = JavaVersion.VERSION_11
 
 	repositories {
 		mavenCentral()
