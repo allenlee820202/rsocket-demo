@@ -7,33 +7,37 @@ plugins {
 	kotlin("plugin.spring") version "1.4.10"
 }
 
-group = "allen.lee"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+allprojects {
 
-repositories {
-	mavenCentral()
-}
+	group = "allen.lee"
+	version = "0.0.1-SNAPSHOT"
+	java.sourceCompatibility = JavaVersion.VERSION_11
 
-dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-rsocket")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("io.reactivex.rxjava3:rxjava:3.0.7")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
-}
+	repositories {
+		mavenCentral()
+	}
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+	dependencies {
+		implementation("org.springframework.boot:spring-boot-starter-rsocket")
+		implementation("org.springframework.boot:spring-boot-starter-webflux")
+		implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+		implementation("org.jetbrains.kotlin:kotlin-reflect")
+		implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+		implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+		implementation("io.reactivex.rxjava3:rxjava:3.0.7")
+		testImplementation("org.springframework.boot:spring-boot-starter-test")
+		testImplementation("io.projectreactor:reactor-test")
+	}
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
+	tasks.withType<Test> {
+		useJUnitPlatform()
+	}
+
+	tasks.withType<KotlinCompile> {
+		kotlinOptions {
+			freeCompilerArgs = listOf("-Xjsr305=strict")
+			jvmTarget = "11"
+		}
 	}
 }
+
