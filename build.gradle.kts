@@ -45,6 +45,7 @@ allprojects {
 		implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 		implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 		implementation("io.reactivex.rxjava3:rxjava:3.0.7")
+		implementation("io.github.microutils:kotlin-logging:1.8.3")
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
 		testImplementation("io.projectreactor:reactor-test")
 	}
