@@ -46,6 +46,7 @@ allprojects {
 		implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 		implementation("io.reactivex.rxjava3:rxjava:3.0.7")
 		implementation("io.github.microutils:kotlin-logging:1.8.3")
+		implementation("io.projectreactor.addons:reactor-adapter:3.4.0")
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
 		testImplementation("io.projectreactor:reactor-test")
 	}

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Controller
 @Controller
 class RequestStreamController {
     @MessageMapping("requestStream")
-    fun getStreamData(request: String): Flowable<Int> {
+    fun getStreamData(request: String): Flowable<Foo> {
         logger.info("request is $request")
-        return Flowable.fromIterable(0..1000)
+        return Flowable.fromIterable(0..1000).map { Foo(message = it.toString()) }
     }
 
     private fun infiniteIntStreamGenerator(start: Int, step: Int): Flowable<Int> {
@@ -27,3 +27,5 @@ class RequestStreamController {
 
     companion object : KLogging()
 }
+
+data class Foo(val message: String)
