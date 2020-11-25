@@ -1,7 +1,9 @@
 package allen.lee.rsocketclient.controller
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import mu.KLogging
 import org.springframework.messaging.rsocket.RSocketRequester
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,10 +22,12 @@ class RestToStreamController(
                         .data("request message")
                         .retrieveFlux(Foo("dummy").javaClass)
         )
-                .map { element ->
+                .observeOn(Schedulers.io())
+                .flatMap ({ element ->
                     logger.info { element.message }
-                    element
-                }
+                    Thread.sleep(100L)
+                    Flowable.just(element)
+                }, false, 1)
                 .toList().map { it.size }
 
     }
