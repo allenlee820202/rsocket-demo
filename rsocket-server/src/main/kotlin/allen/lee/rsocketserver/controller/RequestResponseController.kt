@@ -6,7 +6,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.stereotype.Controller
 
 @Controller
-class HelloController {
+class RequestResponseController {
     @MessageMapping("helloReqResp")
     fun getHelloData(greeting: String): Single<HelloData> {
         logger.info { "greeting received: $greeting" }
