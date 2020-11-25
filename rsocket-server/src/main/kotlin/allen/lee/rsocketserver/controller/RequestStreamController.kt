@@ -13,10 +13,10 @@ class RequestStreamController {
     @MessageMapping("requestStream")
     fun getStreamData(request: String): Flowable<Int> {
         logger.info("request is $request")
-        return intervalSequence(0, 1)
+        return Flowable.fromIterable(0..1000)
     }
 
-    private fun intervalSequence(start: Int, step: Int): Flowable<Int> {
+    private fun infiniteIntStreamGenerator(start: Int, step: Int): Flowable<Int> {
         return Flowable.generate(Supplier { start },
                 BiFunction { s: Int, emitter: Emitter<Int> ->
                     val next: Int = s + step
